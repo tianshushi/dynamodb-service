@@ -4,4 +4,3 @@
 启动DynamoDB：java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -inMemory
 
 启动dynamodb-server服务：mvn clean spring-boot:run
-# dynamodb-service
