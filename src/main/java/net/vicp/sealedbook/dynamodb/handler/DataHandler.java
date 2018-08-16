@@ -38,6 +38,7 @@ public class DataHandler {
      * @return
      */
     public Map<String, Object> queryOne(String tableName, Object hashValue) {
+
         DynamoDB dynamoDB = DynamoDBLocalClientFactory.fetchDynamoDB();
         Table table = dynamoDB.getTable(tableName);
 
@@ -59,13 +60,15 @@ public class DataHandler {
      * @return
      */
     public Map<String, Object> queryOne(String tableName, Object hashValue, Object sortValue) {
+
         DynamoDB dynamoDB = DynamoDBLocalClientFactory.fetchDynamoDB();
         Table table = dynamoDB.getTable(tableName);
 
         TableDescribeResponse tableDescribeResponse = tableHandler.fetchTableDescribe(tableName);
+
         String hashKeyName = tableDescribeResponse.getHashKey();
         String sortKeyName = tableDescribeResponse.getSortKey();
-        Item item = table.getItem(hashKeyName, hashValue, sortKeyName, sortValue);
+        Item item = table.getItem(hashKeyName, hashValue, sortKeyName, Long.valueOf(sortValue.toString()));
         if (null == item) {
             return null;
         }
@@ -80,6 +83,7 @@ public class DataHandler {
      * @param modifyData 修改的数据
      */
     public void modify(String tableName, Object hashValue, Map<String, Object> modifyData) {
+
         DynamoDB dynamoDB = DynamoDBLocalClientFactory.fetchDynamoDB();
         Table table = dynamoDB.getTable(tableName);
 
@@ -106,14 +110,14 @@ public class DataHandler {
      * @param hashValue 分区键值
      */
     public void delete(String tableName, Object hashValue) {
+
         DynamoDB dynamoDB = DynamoDBLocalClientFactory.fetchDynamoDB();
         Table table = dynamoDB.getTable(tableName);
 
         TableDescribeResponse tableDescribeResponse = tableHandler.fetchTableDescribe(tableName);
         String hashKeyName = tableDescribeResponse.getHashKey();
 
-        PrimaryKey primaryKey = new PrimaryKey();
-        primaryKey.addComponent(hashKeyName, hashValue);
+        PrimaryKey primaryKey = new PrimaryKey(hashKeyName, hashValue);
         table.deleteItem(primaryKey);
     }
 

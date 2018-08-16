@@ -6,6 +6,7 @@ package net.vicp.sealedbook.dynamodb.api;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class TableController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public ApiResponse<List<String>> tableList() {
+    public ApiResponse<List<String>> tableList(HttpServletRequest request) {
         List<String> tableNames = tableHandler.fetchTableNames();
         return ApiResponse.success(tableNames);
     }

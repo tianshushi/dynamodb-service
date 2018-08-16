@@ -29,7 +29,9 @@ public class ModifyController {
 
     @RequestMapping(value = "/{tableName}/hash/{hashKeyValue}", method = RequestMethod.PUT)
     @ResponseBody
-    public ApiResponse fetchOneValue(@PathVariable String tableName, @PathVariable String hashKeyValue, @RequestBody  Map<String, Object> modifyData) {
+    public ApiResponse fetchOneValue(@PathVariable String tableName, @PathVariable String hashKeyValue,
+                                     @RequestBody Map<String, Object> modifyData) {
+
         dataHandler.modify(tableName, hashKeyValue, modifyData);
         return ApiResponse.success();
     }

@@ -58,13 +58,10 @@ public final class Convertor {
 
     private static String[] fetchKeys(List<AttributeDefinition> attributeDefinitions, List<KeySchemaElement> keySchema) {
         AttributeDefinition hashAttributeDefinition = attributeDefinitions.get(0);
-        KeySchemaElement hashKeySchemaElement = keySchema.get(0);
 
         AttributeDefinition sortAttributeDefinition = null;
-        KeySchemaElement sortKeySchemaElement = null;
         if (attributeDefinitions.size() == 2) {
             sortAttributeDefinition = attributeDefinitions.get(1);
-            sortKeySchemaElement = keySchema.get(1);
         }
         String hash = hashAttributeDefinition.getAttributeName();
         String hashType = hashAttributeDefinition.getAttributeType();

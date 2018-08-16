@@ -88,6 +88,21 @@
         </repository>
     </repositories>
 
+    <profiles>
+        <profile>
+            <id>test</id>
+            <properties>
+                <config.env>test</config.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+            <properties>
+                <config.env>local</config.env>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>

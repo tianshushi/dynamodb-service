@@ -6,6 +6,8 @@ package net.vicp.sealedbook.dynamodb.entity;
 import java.io.Serializable;
 
 /**
+ * 表基本信息描述响应结构体
+ *
  * @author shitianshu on 2018/5/4 下午8:30.
  */
 public class TableDescribeResponse implements Serializable {

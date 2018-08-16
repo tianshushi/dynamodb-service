@@ -33,9 +33,20 @@ public class QueryController {
     @RequestMapping(value = "/{tableName}/hash/{hashKeyValue}", method = RequestMethod.GET)
     @ResponseBody
     public ApiResponse fetchOneValue(@PathVariable String tableName, @PathVariable String hashKeyValue) {
+
         Map<String, Object> objectMap = dataHandler.queryOne(tableName, hashKeyValue);
         LOG.info("query one. tableName:[{}], hashKeyValue:[{}], data:[{}]", tableName, hashKeyValue, objectMap);
         return ApiResponse.success(objectMap);
     }
 
+    @RequestMapping(value = "/{tableName}/hash/{hashKeyValue}/sort/{sortKeyValue}", method = RequestMethod.GET)
+    @ResponseBody
+    public ApiResponse fetchOneValue(@PathVariable String tableName, @PathVariable String hashKeyValue,
+                                     @PathVariable String sortKeyValue) {
+
+        Map<String, Object> objectMap = dataHandler.queryOne(tableName, hashKeyValue, sortKeyValue);
+        LOG.info("query one. tableName:[{}], hashKeyValue:[{}], sortKeyValue:[{}], data:[{}]", tableName, hashKeyValue,
+            sortKeyValue, objectMap);
+        return ApiResponse.success(objectMap);
+    }
 }
