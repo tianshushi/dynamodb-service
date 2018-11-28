@@ -22,7 +22,7 @@ public class DynamoDBLocalClientFactory extends DynamoDBClientFactory {
 
     private static final Logger LOG = LoggerFactory.getLogger(DynamoDBLocalClientFactory.class);
 
-    private static final String IP_PORT = "http://172.20.7.2:8000";
+    private static final String IP_PORT = "http://172.20.39.4:8000";
 
     /** DynamoDB错误重试次数 */
     private static final int ERROR_RETRY_TIME = 3;
